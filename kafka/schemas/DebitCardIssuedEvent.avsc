@@ -1,0 +1,11 @@
+{
+ "type": "record",
+ "name": "DebitCardIssuedEvent",
+ "namespace": "cz.strancice.ttkacik.bank.cardmanagement.events",
+ "fields": [
+ {"name": "accountId", "type": "string"},
+ {"name": "cardId", "type": "string"},
+ {"name": "cardType", "type": "string"},
+ {"name": "activationDate", "type": "string"} 
+ ]
+}

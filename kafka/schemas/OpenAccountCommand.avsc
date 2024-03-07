@@ -1,0 +1,10 @@
+{
+ "type": "record",
+ "name": "OpenAccountCommand",
+ "namespace": "cz.strancice.ttkacik.bank.accountmanagement",
+ "fields": [
+ {"name": "userId", "type": "string"},
+ {"name": "accountType", "type": "string"},
+ {"name": "initialDeposit", "type": "double"}
+ ]
+}

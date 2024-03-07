@@ -1,0 +1,9 @@
+{
+ "type": "record",
+ "name": "IssueDebitCardCommand",
+ "namespace": "cz.strancice.ttkacik.bank.cardmanagement",
+ "fields": [
+ {"name": "accountId", "type": "string"},
+ {"name": "cardType", "type": "string"}
+ ]
+}

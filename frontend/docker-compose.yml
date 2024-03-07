@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  react-nginx-app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: http://localhost:8091/web-api
+        REACT_APP_PUBLIC_URL: /bankapp
+    ports:
+      - "8081:80"
+    restart: unless-stopped

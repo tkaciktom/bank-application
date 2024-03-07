@@ -1,0 +1,10 @@
+{
+ "type": "record",
+ "name": "StartBundleActivationProcess",
+ "namespace": "cz.strancice.ttkacik.bank.accountmanagement",
+ "fields": [
+ {"name": "userId", "type": "string"},
+ {"name": "productBundleId", "type": "string"},
+ {"name": "initialDeposit", "type": "double"}
+ ]
+}

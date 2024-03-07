@@ -1,0 +1,10 @@
+{
+ "type": "record",
+ "name": "NotifyUserCommand",
+ "namespace": "cz.strancice.ttkacik.bank.notifications.commands",
+ "fields": [
+ {"name": "userId", "type": "string"},
+ {"name": "message", "type": "string"},
+ {"name": "notificationType", "type": "string"}
+ ]
+}
