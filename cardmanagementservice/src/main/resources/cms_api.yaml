@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Card API
+  version: "1.0"
+servers:
+  - url: 'http://localhost:10092'
+paths:
+  /cards/{referencedProductId}:
+    get:
+      summary: Vrátí seznam karet pro konkrétní product
+      operationId: getReferencedProductCards
+      parameters:
+        - name: referencedProductId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Seznam karet asociovaných s daným produktem
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CardDto'
+  /cards/{referencedProductId}/{cardType}:
+    get:
+      summary: Vrátí seznam karet konkrétního typu pro konkrétní product
+      operationId: getReferencedProductCardsOfType
+      parameters:
+        - name: referencedProductId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: cardType
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Seznam seznam karet konkrétního typu pro konkrétní product
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CardDto'
+  /cards/{cardId}/status:
+    get:
+      summary: Vrátí status dané karty
+      operationId: getCardStatus
+      parameters:
+        - name: cardId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status karty
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    CardDto:
+      type: object
+      properties:
+        id:
+          type: string
+        referencedProductId:
+          type: string
+        cardNumber:
+          type: string
+        cardType:
+          type: string
+        cardVariant:
+          type: string
+        status:
+          type: string
+        reasonClosedType:
+          type: string
