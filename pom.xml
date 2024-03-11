@@ -8,6 +8,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>cardmanagementservice</module>
+        <module>accountmanagementservice</module>
         <module>backendforfrontend</module>
     </modules>
 </project>
