@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CardCommandService implements
+public class CardService implements
         IssueCardUseCase,
         RemoveCardUseCase,
         GetCardStatusUseCase,
@@ -20,7 +20,7 @@ public class CardCommandService implements
         GetReferencedProductCardsOfTypeUseCase {
     private final CardRepository cardRepository;
 
-    public CardCommandService(CardRepository cardRepository) {
+    public CardService(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
     }
 

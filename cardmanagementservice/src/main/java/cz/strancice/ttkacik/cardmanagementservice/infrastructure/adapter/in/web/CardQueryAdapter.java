@@ -1,6 +1,6 @@
 package cz.strancice.ttkacik.cardmanagementservice.infrastructure.adapter.in.web;
 
-import cz.strancice.ttkacik.cardmanagementservice.application.service.CardCommandService;
+import cz.strancice.ttkacik.cardmanagementservice.application.service.CardService;
 import cz.strancice.ttkacik.cardmanagementservice.rest.model.CardDto;
 import cz.strancice.ttkacik.cardmanagementservice.rest.api.CardsApi;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CardQueryAdapter implements CardsApi {
 
-    private final CardCommandService cardCommandService;
+    private final CardService cardCommandService;
     private final CardDtoMapper mapper;
 
     @Override

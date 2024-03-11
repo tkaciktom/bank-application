@@ -3,7 +3,7 @@ package cz.strancice.ttkacik.cardmanagementservice.infrastructure.adapter.in.mes
 
 import cz.strancice.ttkacik.bank.cardmanagement.IssueCardCommand;
 import cz.strancice.ttkacik.bank.cardmanagement.RemoveCardCommand;
-import cz.strancice.ttkacik.cardmanagementservice.application.service.CardCommandService;
+import cz.strancice.ttkacik.cardmanagementservice.application.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class CardCommandAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CardCommandAdapter.class);
 
-    private final CardCommandService cardCommandService;
+    private final CardService cardCommandService;
 
     @KafkaListener(topics = "card-management-commands", groupId = "card-management")
     public void listenForCommand(@Payload Object record, @Header("MESSAGE_ID") String messageId) {
