@@ -4,15 +4,23 @@ services:
     image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
+    networks:
+      - bank-application
   kafka:
     image: wurstmeister/kafka
     ports:
       - "9092:9092"
+      - "29092:29092"
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: EXTERNAL_SAME_HOST://:29092,INTERNAL://:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL_SAME_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL_SAME_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - bank-application
   schema-registry:
     image: confluentinc/cp-schema-registry
     ports:
@@ -23,7 +31,15 @@ services:
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
     depends_on:
       - kafka
+    networks:
+      - bank-application
   init-schemas:
     build: .
     depends_on:
       - schema-registry
+    networks:
+      - bank-application
+
+networks:
+  bank-application:
+    external: true
