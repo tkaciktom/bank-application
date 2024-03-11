@@ -9,7 +9,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
-import cz.strancice.ttkacik.accountmanagementservice.application.service.AccountCommandService;
+import cz.strancice.ttkacik.accountmanagementservice.application.service.AccountService;
 import cz.strancice.ttkacik.bank.accountmanagement.OpenAccountCommand;
 
 @Service
@@ -18,7 +18,7 @@ public class AccountCommandAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountCommandAdapter.class);
 
-    private final AccountCommandService accountCommandService;
+    private final AccountService accountService;
 
     @KafkaListener(topics = "account-management-commands", groupId = "account-management")
     public void listenForCommand(@Payload Object record, @Header("MESSAGE_ID") String messageId) {
@@ -33,7 +33,7 @@ public class AccountCommandAdapter {
 
     private void processCloseAccountCommand(CloseAccountCommand command, String messageId) {
         LOGGER.info("Processing CloseAccountCommand: {} for messageId: {}", command, messageId);
-        accountCommandService.closeAccount(
+        accountService.closeAccount(
                 command.getAccountId().toString(),
                 command.getReasonType().toString(),
                 messageId);
@@ -41,7 +41,7 @@ public class AccountCommandAdapter {
 
     private void processOpenAccountCommand(OpenAccountCommand command, String messageId) {
         LOGGER.info("Processing OpenAccountCommand: {} for messageId: {}", command, messageId);
-        accountCommandService.createAccount(
+        accountService.createAccount(
                 command.getUserId().toString(),
                 command.getAccountType().toString(),
                 command.getInitialDeposit(),

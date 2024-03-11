@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class AccountCommandService implements
+public class AccountService implements
         CreateAccountUseCase,
         CloseAccountUseCase,
         GetAccountStatusUseCase,
@@ -20,7 +20,7 @@ public class AccountCommandService implements
         GetUserAccountsOfTypeUseCase {
     private final AccountRepository accountRepository;
 
-    public AccountCommandService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 

@@ -1,6 +1,6 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.in.web;
 
-import cz.strancice.ttkacik.accountmanagementservice.application.service.AccountCommandService;
+import cz.strancice.ttkacik.accountmanagementservice.application.service.AccountService;
 import cz.strancice.ttkacik.accountmanagementservice.rest.api.AccountsApi;
 import cz.strancice.ttkacik.accountmanagementservice.rest.model.BankAccountDTO;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AccountQueryAdapter implements AccountsApi {
 
-    private final AccountCommandService accountCommandService;
+    private final AccountService accountService;
     private final BankAccountDtoMapper mapper;
 
     @Override
     public ResponseEntity<List<BankAccountDTO>> getAccountsByUserId(String userId) {
-        var accountsDto = accountCommandService.getUserAccounts(userId)
+        var accountsDto = accountService.getUserAccounts(userId)
                 .stream()
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
@@ -28,7 +28,7 @@ public class AccountQueryAdapter implements AccountsApi {
 
     @Override
     public ResponseEntity<List<BankAccountDTO>> getAccountsOfTypeByUserId(String userId, String accountType) {
-        var accountsDto = accountCommandService.getUserAccountsOfType(userId, accountType)
+        var accountsDto = accountService.getUserAccountsOfType(userId, accountType)
                 .stream()
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
@@ -37,7 +37,7 @@ public class AccountQueryAdapter implements AccountsApi {
 
     @Override
     public ResponseEntity<String> getAccountStatusByUserId(String accountId) {
-        var status = accountCommandService.getAccountStatus(accountId);
+        var status = accountService.getAccountStatus(accountId);
         return ResponseEntity.ok(status);
     }
 }
