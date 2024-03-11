@@ -1,0 +1,87 @@
+openapi: 3.0.0
+info:
+  title: Bank Account API
+  version: "1.0"
+servers:
+  - url: 'http://localhost:10091'
+paths:
+  /accounts/{userId}:
+    get:
+      summary: Vrátí seznam účtů pro konkrétního uživatele
+      operationId: getAccountsByUserId
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Seznam účtů uživatele
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BankAccountDTO'
+  /accounts/{userId}/{accountType}:
+    get:
+      summary: Vrátí seznam účtů konkrétního typu pro konkrétního uživatele
+      operationId: getAccountsOfTypeByUserId
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: accountType
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Seznam účtů specifického typu uživatele
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BankAccountDTO'
+  /accounts/{accountId}/status:
+    get:
+      summary: Vrátí status daného účtu
+      operationId: getAccountStatusByUserId
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status účtu
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    BankAccountDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        balance:
+          type: number
+          format: double
+        status:
+          type: string
+        reasonClosedType:
+          type: string

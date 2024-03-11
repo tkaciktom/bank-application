@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "AccountOpenedEvent",
+  "namespace": "cz.strancice.ttkacik.bank.accountmanagement.events",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "string"
+    },
+    {
+      "name": "accountId",
+      "type": "string"
+    },
+    {
+      "name": "accountType",
+      "type": "string"
+    }
+  ]
+}

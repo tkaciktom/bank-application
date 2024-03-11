@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "CardRemovedEvent",
+  "namespace": "cz.strancice.ttkacik.bank.cardmanagement.events",
+  "fields": [
+    {
+      "name": "referencedProductId",
+      "type": "string"
+    },
+    {
+      "name": "cardId",
+      "type": "string"
+    },
+    {
+      "name": "cardType",
+      "type": "string"
+    },
+    {
+      "name": "reasonType",
+      "type": "string"
+    }
+  ]
+}

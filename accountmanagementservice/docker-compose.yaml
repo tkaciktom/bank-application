@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  accountmanagementservice:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    image: accountmanagementservice:1.0
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "10091:8080"
+    networks:
+      - bank-application
+
+networks:
+  bank-application:
+    external: true
