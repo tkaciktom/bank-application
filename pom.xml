@@ -10,6 +10,7 @@
     <modules>
         <module>cardmanagementservice</module>
         <module>accountmanagementservice</module>
+        <module>productbundleservice</module>
         <module>backendforfrontend</module>
     </modules>
 </project>

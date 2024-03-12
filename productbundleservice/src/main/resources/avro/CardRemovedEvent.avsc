@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "CardIssuedEvent",
+  "name": "CardRemovedEvent",
   "namespace": "cz.strancice.ttkacik.bank.cardmanagement.events",
   "fields": [
     {
@@ -16,7 +16,7 @@
       "type": "string"
     },
     {
-      "name": "activationDate",
+      "name": "reasonType",
       "type": "string"
     }
   ]

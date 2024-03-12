@@ -1,14 +1,10 @@
 {
   "type": "record",
-  "name": "CardIssuedEvent",
-  "namespace": "cz.strancice.ttkacik.bank.cardmanagement.events",
+  "name": "IssueCardCommand",
+  "namespace": "cz.strancice.ttkacik.bank.cardmanagement",
   "fields": [
     {
       "name": "referencedProductId",
-      "type": "string"
-    },
-    {
-      "name": "cardId",
       "type": "string"
     },
     {
@@ -16,7 +12,7 @@
       "type": "string"
     },
     {
-      "name": "activationDate",
+      "name": "cardVariant",
       "type": "string"
     }
   ]

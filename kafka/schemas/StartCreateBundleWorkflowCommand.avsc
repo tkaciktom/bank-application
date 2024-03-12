@@ -1,18 +1,18 @@
 {
   "type": "record",
-  "name": "AccountOpenedEvent",
-  "namespace": "cz.strancice.ttkacik.bank.accountmanagement.events",
+  "name": "StartCreateBundleWorkflowCommand",
+  "namespace": "cz.strancice.ttkacik.bank.workflowmanagement",
   "fields": [
     {
       "name": "userId",
       "type": "string"
     },
     {
-      "name": "accountId",
+      "name": "bundleId",
       "type": "string"
     },
     {
-      "name": "accountType",
+      "name": "bundleOfferId",
       "type": "string"
     }
   ]

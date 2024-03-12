@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  cardmanagementservice:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    image: cardmanagementservice:1.0
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "10092:8080"
+    networks:
+      - bank-application
+
+networks:
+  bank-application:
+    external: true

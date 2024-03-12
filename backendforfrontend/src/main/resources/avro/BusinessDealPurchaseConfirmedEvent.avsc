@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "BusinessDealPurchaseConfirmedEvent",
+  "namespace": "cz.strancice.ttkacik.bank.bundlemanagement",
+  "fields": [
+    {
+      "name": "businessDealPurchaseId",
+      "type": "string"
+    },
+    {
+      "name": "bundlePropositionId",
+      "type": "string"
+    },
+    {
+      "name": "ownerId",
+      "type": "string"
+    }
+  ]
+}

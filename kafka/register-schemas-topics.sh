@@ -17,7 +17,7 @@ done
 
 echo "Initializing Kafka topics..."
 
-topics=("workflow-commands" "account-management-commands" "card-management-commands" "account-events" "card-events" "notification-commands")
+topics=("bundle-management-commands" "account-management-commands" "card-management-commands" "notification-commands" "account-events" "card-events" "bundle-events")
 
 echo "Waiting for Kafka to start..."
 while ! nc -z kafka 9092; do   
