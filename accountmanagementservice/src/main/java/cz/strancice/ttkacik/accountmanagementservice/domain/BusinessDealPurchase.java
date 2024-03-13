@@ -1,17 +1,17 @@
 package cz.strancice.ttkacik.accountmanagementservice.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class BusinessDealPurchaseAccount {
+public class BusinessDealPurchase {
     private String id;
-    private String type;
-    private String name;
-    private String ownerId;
+    private List<BusinessDealPurchaseAccount> accounts;
 }

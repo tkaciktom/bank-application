@@ -1,6 +1,6 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.in.messaging;
 
-import cz.strancice.ttkacik.accountmanagementservice.application.service.BusinessDealPurchaseAccountService;
+import cz.strancice.ttkacik.accountmanagementservice.application.service.BusinessDealPurchaseService;
 import cz.strancice.ttkacik.accountmanagementservice.domain.BusinessDealPurchaseAccount;
 import cz.strancice.ttkacik.bank.accountmanagement.Account;
 import cz.strancice.ttkacik.bank.accountmanagement.CloseAccountCommand;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import cz.strancice.ttkacik.accountmanagementservice.application.service.AccountService;
 
 import java.util.List;
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -25,7 +24,7 @@ public class AccountCommandAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountCommandAdapter.class);
 
     private final AccountService accountService;
-    private final BusinessDealPurchaseAccountService businessDealPurchaseAccountService;
+    private final BusinessDealPurchaseService businessDealPurchaseService;
 
     @KafkaListener(topics = "account-management-commands", groupId = "account-management")
     public void listenForCommand(@Payload Object record, @Header("MESSAGE_ID") String messageId) {
@@ -52,16 +51,17 @@ public class AccountCommandAdapter {
         List<BusinessDealPurchaseAccount> accounts = event.getAccounts().stream()
                 .map(account -> toBusinessDealPurchaseAccount(
                         account,
-                        event.getBusinessDealPurchaseId().toString(),
                         event.getOwnerId().toString()))
                 .toList();
-        businessDealPurchaseAccountService.createBusinessDealPurchaseAccounts(accounts, messageId);
+        businessDealPurchaseService.createBusinessDealPurchase(
+                event.getBusinessDealPurchaseId().toString(),
+                accounts,
+                messageId);
     }
 
-    private BusinessDealPurchaseAccount toBusinessDealPurchaseAccount(Account account, String businessPurchaseId, String ownerId) {
+    private BusinessDealPurchaseAccount toBusinessDealPurchaseAccount(Account account, String ownerId) {
         return BusinessDealPurchaseAccount.builder()
                 .id(account.getDealId().toString())
-                .businessDealPurchaseId(businessPurchaseId)
                 .type(account.getType().toString())
                 .name(account.getName().toString())
                 .ownerId(ownerId)

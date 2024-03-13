@@ -4,8 +4,8 @@ import cz.strancice.ttkacik.accountmanagementservice.domain.BusinessDealPurchase
 
 import java.util.List;
 
-public interface CreateBusinessDealPurchaseAccountsUseCase {
+public interface CreateBusinessDealPurchaseUseCase {
 
-    void createBusinessDealPurchaseAccounts(List<BusinessDealPurchaseAccount> accounts, String messageId);
+    void createBusinessDealPurchase(String businessDealPurchaseId, List<BusinessDealPurchaseAccount> accounts, String messageId);
 
 }

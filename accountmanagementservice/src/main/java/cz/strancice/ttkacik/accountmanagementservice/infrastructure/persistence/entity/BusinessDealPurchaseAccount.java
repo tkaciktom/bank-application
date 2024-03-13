@@ -1,17 +1,14 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Embeddable
 @Getter
 @Setter
-public class BusinessDealPurchaseAccountEntity {
-    @Id
+public class BusinessDealPurchaseAccount {
     private String id;
-    private String businessDealPurchaseId;
     private String type;
     private String name;
     private String ownerId;
