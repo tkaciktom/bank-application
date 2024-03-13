@@ -1,6 +1,6 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.service.outbox;
 
-import cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.out.persistence.OutboxEventEntity;
+import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity.OutboxEventEntity;
 import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.OutboxEventJpaRepository;
 import cz.strancice.ttkacik.bank.accountmanagement.OpenAccountCommand;
 import lombok.RequiredArgsConstructor;

@@ -25,7 +25,13 @@ public class KafkaMessageFactory {
     private Object toAccountOpenedMessage(String jsonData) {
         try {
             var event = objectMapper.readValue(jsonData, BankAccountOpenedEvent.class);
-            return new AccountOpenedEvent(event.getUserId(), event.getAccountId(), event.getAccountType());
+            return new AccountOpenedEvent(
+                    event.getUserId(),
+                    event.getAccountId(),
+                    event.getAccountType(),
+                    event.getBusinessDealPurchaseId(),
+                    event.getBusinessDealPurchaseAccountId()
+            );
         } catch (Exception e) {
             throw new RuntimeException("Cannot read json data", e);
         }

@@ -2,7 +2,7 @@ package cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.in.
 
 import cz.strancice.ttkacik.accountmanagementservice.application.service.AccountService;
 import cz.strancice.ttkacik.accountmanagementservice.rest.api.AccountsApi;
-import cz.strancice.ttkacik.accountmanagementservice.rest.model.BankAccountDTO;
+import cz.strancice.ttkacik.accountmanagementservice.rest.model.BankAccountDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ public class AccountQueryAdapter implements AccountsApi {
     private final BankAccountDtoMapper mapper;
 
     @Override
-    public ResponseEntity<List<BankAccountDTO>> getAccountsByUserId(String userId) {
+    public ResponseEntity<List<BankAccountDto>> getAccountsByUserId(String userId) {
         var accountsDto = accountService.getUserAccounts(userId)
                 .stream()
                 .map(mapper::toDto)
@@ -27,7 +27,7 @@ public class AccountQueryAdapter implements AccountsApi {
     }
 
     @Override
-    public ResponseEntity<List<BankAccountDTO>> getAccountsOfTypeByUserId(String userId, String accountType) {
+    public ResponseEntity<List<BankAccountDto>> getAccountsOfTypeByUserId(String userId, String accountType) {
         var accountsDto = accountService.getUserAccountsOfType(userId, accountType)
                 .stream()
                 .map(mapper::toDto)

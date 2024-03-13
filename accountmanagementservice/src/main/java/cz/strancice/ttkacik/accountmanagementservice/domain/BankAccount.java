@@ -21,17 +21,23 @@ public class BankAccount {
     private String userId;
     private String accountNumber;
     private String accountType;
+    private String accountName;
     private BigDecimal balance;
     private BankAccountState status;
     private String reasonClosedType;
+    private String businessDealPurchaseId;
+    private String businessDealPurchaseAccountId;
     private final SimpleStateMachine<BankAccountState, BankAccountStateEvent> statusStateMachine;
 
-    public BankAccount(String userId, String accountType) {
+    public BankAccount(String userId, String accountType, String accountName, String businessDealPurchaseId, String businessDealPurchaseAccountId) {
         this.id = UUID.randomUUID().toString();
         this.userId = userId;
         this.accountNumber = BankAccountNumberGenerator.randomAccountNumber();
         this.accountType = accountType;
+        this.accountName = accountName;
         this.balance = BigDecimal.ZERO;
+        this.businessDealPurchaseId = businessDealPurchaseId;
+        this.businessDealPurchaseAccountId = businessDealPurchaseAccountId;
         this.statusStateMachine = initStatusStateMachine();
         this.status = this.statusStateMachine.getCurrentState();
     }
@@ -72,7 +78,7 @@ public class BankAccount {
     public void onAccountOpened() {
         DomainEventPublisher
                 .instance()
-                .publish(new BankAccountOpenedEvent(this.id, this.userId, this.accountType));
+                .publish(new BankAccountOpenedEvent(this.id, this.userId, this.accountType, this.businessDealPurchaseId, this.businessDealPurchaseAccountId));
     }
 
     public void onAccountClosed() {

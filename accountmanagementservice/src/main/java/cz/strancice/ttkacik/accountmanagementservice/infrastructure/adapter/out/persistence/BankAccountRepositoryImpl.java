@@ -1,5 +1,7 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.out.persistence;
 
+import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity.BankAccountEntity;
+import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity.BankAccountEntityMapper;
 import org.springframework.stereotype.Component;
 import cz.strancice.ttkacik.accountmanagementservice.application.port.out.AccountRepository;
 import cz.strancice.ttkacik.accountmanagementservice.domain.BankAccount;
@@ -13,9 +15,9 @@ import java.util.stream.Collectors;
 public class BankAccountRepositoryImpl implements AccountRepository {
 
     private final BankAccountJpaRepository jpaRepository;
-    private final BankAccountMapper mapper;
+    private final BankAccountEntityMapper mapper;
 
-    public BankAccountRepositoryImpl(BankAccountJpaRepository jpaRepository, BankAccountMapper mapper) {
+    public BankAccountRepositoryImpl(BankAccountJpaRepository jpaRepository, BankAccountEntityMapper mapper) {
         this.jpaRepository = jpaRepository;
         this.mapper = mapper;
     }

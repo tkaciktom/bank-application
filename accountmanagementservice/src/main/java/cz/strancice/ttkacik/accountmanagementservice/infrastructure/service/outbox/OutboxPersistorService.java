@@ -3,7 +3,7 @@ package cz.strancice.ttkacik.accountmanagementservice.infrastructure.service.out
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.strancice.ttkacik.accountmanagementservice.domain.event.DomainEvent;
 import cz.strancice.ttkacik.accountmanagementservice.domain.event.DomainEventPublisher;
-import cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.out.persistence.OutboxEventEntity;
+import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity.OutboxEventEntity;
 import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.OutboxEventJpaRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

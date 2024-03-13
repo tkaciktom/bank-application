@@ -2,12 +2,12 @@ package cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.in.
 
 import cz.strancice.ttkacik.accountmanagementservice.domain.BankAccount;
 import org.mapstruct.Mapper;
-import cz.strancice.ttkacik.accountmanagementservice.rest.model.BankAccountDTO;
+import cz.strancice.ttkacik.accountmanagementservice.rest.model.BankAccountDto;
 
 @Mapper(componentModel = "spring")
 public interface BankAccountDtoMapper {
 
-    BankAccountDTO toDto(BankAccount entity);
+    BankAccountDto toDto(BankAccount entity);
 
-    BankAccount toDomain(BankAccountDTO dto);
+    BankAccount toDomain(BankAccountDto dto);
 }

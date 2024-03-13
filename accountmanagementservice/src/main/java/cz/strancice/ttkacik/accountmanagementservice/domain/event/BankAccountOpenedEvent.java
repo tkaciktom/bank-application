@@ -11,6 +11,8 @@ public class BankAccountOpenedEvent implements DomainEvent {
     private String accountId;
     private String userId;
     private String accountType;
+    private String businessDealPurchaseId;
+    private String businessDealPurchaseAccountId;
 
     @Override
     public Type getType() {

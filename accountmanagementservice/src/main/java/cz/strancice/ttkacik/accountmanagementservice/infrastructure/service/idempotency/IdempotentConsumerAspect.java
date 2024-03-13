@@ -1,6 +1,6 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.service.idempotency;
 
-import cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.out.persistence.ProcessedMessageEntity;
+import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity.ProcessedMessageEntity;
 import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.ProcessedMessagesRepository;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;

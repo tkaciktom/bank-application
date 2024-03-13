@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 @Transactional
 public class AccountService implements
-        CreateAccountUseCase,
         CloseAccountUseCase,
         GetAccountStatusUseCase,
         GetUserAccountsUseCase,
@@ -22,16 +21,6 @@ public class AccountService implements
 
     public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
-    }
-
-    @Override
-    @Transactional
-    @IdempotentConsumer(messageParamName = "messageId")
-    public BankAccount createAccount(String userId, String accountType, double initialDeposit, String messageId) {
-        BankAccount newAccount = new BankAccount(userId, accountType);
-        newAccount.open();
-        accountRepository.saveAccount(newAccount);
-        return newAccount;
     }
 
     @Override

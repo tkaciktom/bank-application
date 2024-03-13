@@ -23,7 +23,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BankAccountDTO'
+                  $ref: '#/components/schemas/BankAccountDto'
   /accounts/{userId}/{accountType}:
     get:
       summary: Vrátí seznam účtů konkrétního typu pro konkrétního uživatele
@@ -47,7 +47,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BankAccountDTO'
+                  $ref: '#/components/schemas/BankAccountDto'
   /accounts/{accountId}/status:
     get:
       summary: Vrátí status daného účtu
@@ -67,7 +67,7 @@ paths:
                 type: string
 components:
   schemas:
-    BankAccountDTO:
+    BankAccountDto:
       type: object
       properties:
         id:
@@ -77,6 +77,8 @@ components:
         accountNumber:
           type: string
         accountType:
+          type: string
+        accountName:
           type: string
         balance:
           type: number

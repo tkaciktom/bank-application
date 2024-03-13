@@ -1,6 +1,6 @@
 package cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence;
 
-import cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.out.persistence.BankAccountEntity;
+import cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity.BankAccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

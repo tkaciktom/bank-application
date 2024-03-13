@@ -1,0 +1,40 @@
+{
+  "type": "record",
+  "name": "CreateBusinessDealPurchaseAccountsCommand",
+  "namespace": "cz.strancice.ttkacik.bank.accountmanagement",
+  "fields": [
+    {
+      "name": "businessDealPurchaseId",
+      "type": "string"
+    },
+    {
+      "name": "ownerId",
+      "type": "string"
+    },
+    {
+      "name": "accounts",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Account",
+          "fields": [
+            {
+              "name": "dealId",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "type",
+              "type": "string"
+            }
+          ]
+        }
+
+      }
+    }
+  ]
+}

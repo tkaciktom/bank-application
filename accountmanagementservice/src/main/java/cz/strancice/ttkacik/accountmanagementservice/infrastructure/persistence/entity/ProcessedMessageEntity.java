@@ -1,4 +1,4 @@
-package cz.strancice.ttkacik.accountmanagementservice.infrastructure.adapter.out.persistence;
+package cz.strancice.ttkacik.accountmanagementservice.infrastructure.persistence.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
